@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2023/12/16 16:22:42 by ale-tron         ###   ########.fr       */
+/*   Created: 2023/09/15 15:30:49 by ale-tron          #+#    #+#             */
+/*   Updated: 2023/09/18 10:33:06 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include "../libft/libft.h"
-# include <limits.h>
-
-typedef struct s_list
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int				value;
-	struct s_list	*previous;
-	struct s_list	*next;
-}	t_list;
+	size_t			i;
+	unsigned char	*s;
 
-int	ft_check_error(int argc, char **argv);
-
-#endif
+	i = 0;
+	s = b;
+	while (i < len)
+	{
+		s[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
+}

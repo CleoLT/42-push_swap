@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2023/12/16 16:22:42 by ale-tron         ###   ########.fr       */
+/*   Created: 2023/09/30 12:43:27 by ale-tron          #+#    #+#             */
+/*   Updated: 2023/09/30 13:28:46 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include "../libft/libft.h"
-# include <limits.h>
-
-typedef struct s_list
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int				value;
-	struct s_list	*previous;
-	struct s_list	*next;
-}	t_list;
+	int	i;
 
-int	ft_check_error(int argc, char **argv);
-
-#endif
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}

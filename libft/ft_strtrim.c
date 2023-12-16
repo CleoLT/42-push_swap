@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2023/12/16 16:22:42 by ale-tron         ###   ########.fr       */
+/*   Created: 2023/09/27 11:11:55 by ale-tron          #+#    #+#             */
+/*   Updated: 2023/09/27 14:55:48 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include "../libft/libft.h"
-# include <limits.h>
-
-typedef struct s_list
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int				value;
-	struct s_list	*previous;
-	struct s_list	*next;
-}	t_list;
+	char	*new;
+	size_t	start;
+	size_t	len;
 
-int	ft_check_error(int argc, char **argv);
-
-#endif
+	start = 0;
+	len = 0;
+	if (ft_strlen(s1) > 0)
+		len = ft_strlen(s1) - 1;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (s1[len] && ft_strchr(set, s1[len]))
+		len--;
+	new = ft_substr(s1, start, len - start + 1);
+	return (new);
+}

@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2023/12/16 16:22:42 by ale-tron         ###   ########.fr       */
+/*   Created: 2023/09/18 11:29:15 by ale-tron          #+#    #+#             */
+/*   Updated: 2023/09/20 12:26:00 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include "../libft/libft.h"
-# include <limits.h>
-
-typedef struct s_list
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int				value;
-	struct s_list	*previous;
-	struct s_list	*next;
-}	t_list;
+	size_t		i;
+	char		*d;
+	const char	*s;
 
-int	ft_check_error(int argc, char **argv);
-
-#endif
+	i = 0;
+	d = dst;
+	s = src;
+	if (d == NULL && s == NULL)
+		return (NULL);
+	if (s < d)
+	{
+		while (++i <= len)
+			d[len - i] = s[len - i];
+	}
+	else
+	{
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
+	return (dst);
+}

@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2023/12/16 16:22:42 by ale-tron         ###   ########.fr       */
+/*   Created: 2023/09/21 15:21:11 by ale-tron          #+#    #+#             */
+/*   Updated: 2023/09/21 16:51:13 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include "../libft/libft.h"
-# include <limits.h>
-
-typedef struct s_list
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int				value;
-	struct s_list	*previous;
-	struct s_list	*next;
-}	t_list;
+	size_t				i;
+	const unsigned char	*str1;
+	const unsigned char	*str2;
 
-int	ft_check_error(int argc, char **argv);
-
-#endif
+	i = 0;
+	str1 = s1;
+	str2 = s2;
+	if (n == 0)
+		return (0);
+	while (i < n - 1)
+	{
+		if (str1[i] != str2[i])
+			break ;
+		i++;
+	}
+	return (str1[i] - str2[i]);
+}
