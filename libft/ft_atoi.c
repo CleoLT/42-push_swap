@@ -6,15 +6,15 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:09:37 by ale-tron          #+#    #+#             */
-/*   Updated: 2023/09/27 15:20:30 by ale-tron         ###   ########.fr       */
+/*   Updated: 2023/12/16 17:57:01 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	num;
+	int		i;
+	int		sign;
+	long	num;
 
 	i = 0;
 	sign = 1;
