@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:17:57 by ale-tron          #+#    #+#             */
-/*   Updated: 2023/12/16 17:57:33 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:22:55 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -32,7 +32,7 @@ static int	ft_check_int(char **argv)
 				return (-1);
 			j++;
 		}
-		printf("%d\n", ft_atoi(argv[i]) > 2147483647);
+	//	printf("%d\n", ft_atoi(argv[i]) > 2147483647);
 		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
 			return (-1);
 		i++;
