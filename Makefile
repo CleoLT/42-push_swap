@@ -6,7 +6,7 @@
 #    By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 16:48:17 by ale-tron          #+#    #+#              #
-#    Updated: 2024/01/04 16:07:21 by ale-tron         ###   ########.fr        #
+#    Updated: 2024/01/04 16:52:42 by ale-tron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = push_swap
@@ -25,7 +25,7 @@ OBJ_DIR = obj/
 
 SRC = push_swap.c ft_check_error.c
 
-INCLUDE = include/push_swap.h Makefile
+INCLUDE = include/push_swap.h Makefile libft/*.c
 
 OBJ = ${addprefix ${OBJ_DIR},${SRC:.c=.o}}
 
