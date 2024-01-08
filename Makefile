@@ -23,7 +23,7 @@ LIBFT_DIR = libft/
 
 OBJ_DIR = obj/
 
-SRC = push_swap.c ft_check_error.c
+SRC = push_swap.c handle_errors.c fill_stack.c
 
 INCLUDE = include/push_swap.h Makefile libft/*.c
 

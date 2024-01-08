@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_error.c                                   :+:      :+:    :+:   */
+/*   handle_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../include/push_swap.h"
 
-static int	ft_check_int(char **argv)
+int	error_syntax(char **argv)
 {
 	int	i;
 	int	j;
@@ -40,11 +40,55 @@ static int	ft_check_int(char **argv)
 	return (0);
 }
 
-int	ft_check_error(int argc, char **argv)
+int	error_duplicate(t_stack *stack)
 {
-	if (argc < 3)
-		return (-1);
-	if (ft_check_int(argv))
-		return (-1);
+	t_stack *tmp;
+
+	while (stack)
+	{
+		tmp = stack->next;
+		while (tmp)
+		{
+			if (stack->value == tmp->value)
+				return (-1);
+			tmp = tmp->next;
+		}
+		stack = stack->next;
+	}
 	return (0);
+}
+
+int	check_sorted(t_stack *stack)
+{
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (1);		
+		stack = stack->next;
+	}
+	return (0);
+}
+
+void free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+	t_stack *current;
+
+	if (!stack)
+		return ;
+	current = *stack;
+	while (current)
+	{
+		tmp = current->next;
+		current->value = 0;
+		free(current);
+		current = tmp;	
+	}
+	*stack = NULL;
+}
+
+void	ft_error(void)
+{
+	ft_putstr_fd("Error\n", 1);
+	exit(1);
 }

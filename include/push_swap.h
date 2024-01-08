@@ -24,6 +24,14 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-int	ft_check_error(int argc, char **argv);
+int	error_duplicate(t_stack *stack);
+int	error_syntax(char **argv);
+int	check_sorted(t_stack *stack);
+void	ft_error(void);
+void	free_stack(t_stack **stack);
+
+
+void	fill_stack(t_stack **node_a, char **argv);
+
 
 #endif
