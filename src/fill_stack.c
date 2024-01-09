@@ -21,7 +21,7 @@ void	append_node(t_stack **stack, int value)
 		return ;
 	new_node->next = NULL;
 	new_node->value = value;
-	printf("append_node %d\n", new_node->value);
+//	printf("append_node %d\n", new_node->value);
 
 	if (!(*stack))
 	{

@@ -30,8 +30,8 @@ int	check_sorted(t_stack *stack);
 void	ft_error(void);
 void	free_stack(t_stack **stack);
 
-
 void	fill_stack(t_stack **node_a, char **argv);
 
+void	swap(t_stack **stack);
 
 #endif

@@ -32,7 +32,6 @@ int	error_syntax(char **argv)
 				return (-1);
 			j++;
 		}
-	//	printf("%d\n", ft_atoi(argv[i]) > 2147483647);
 		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
 			return (-1);
 		i++;

@@ -32,7 +32,12 @@ int	main(int argc, char **argv)
 //        node_a = node_a->next;
 //    }
 	if (check_sorted(node_a))
-		printf("not sorted");
+	{
+		printf("not sorted\n");
+		
+		swap(&node_a);
+		printf("first : %d \n second: %d\n", node_a->value, node_a->next->value);
+	}
 	free_stack(&node_a);
 	return (0);
 }

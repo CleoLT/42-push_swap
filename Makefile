@@ -23,7 +23,7 @@ LIBFT_DIR = libft/
 
 OBJ_DIR = obj/
 
-SRC = push_swap.c handle_errors.c fill_stack.c
+SRC = push_swap.c handle_errors.c fill_stack.c commands/swap.c
 
 INCLUDE = include/push_swap.h Makefile libft/*.c
 
@@ -37,7 +37,7 @@ ${NAME}: ${OBJ}
 		${CC} ${CFLAGS} -o ${NAME} ${OBJ} -L ./libft -lft
 
 ${OBJ_DIR}%.o: ${SRC_DIR}%.c ${INCLUDE}
-		@mkdir -p ${OBJ_DIR}
+		@mkdir -p ${OBJ_DIR}/commands
 		${CC} ${CFLAGS} -c -o $@ $<
 		
 clean:
