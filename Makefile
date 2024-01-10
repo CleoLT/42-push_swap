@@ -6,7 +6,7 @@
 #    By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 16:48:17 by ale-tron          #+#    #+#              #
-#    Updated: 2024/01/04 16:52:42 by ale-tron         ###   ########.fr        #
+#    Updated: 2024/01/10 17:57:21 by ale-tron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = push_swap
@@ -23,7 +23,7 @@ LIBFT_DIR = libft/
 
 OBJ_DIR = obj/
 
-SRC = push_swap.c handle_errors.c fill_stack.c commands/swap.c
+SRC = push_swap.c handle_errors.c fill_stack.c utils.c commands/swap.c commands/rotate.c
 
 INCLUDE = include/push_swap.h Makefile libft/*.c
 
