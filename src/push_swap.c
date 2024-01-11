@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 13:21:27 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/11 15:51:21 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:50:29 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -64,9 +64,11 @@ int	main(int argc, char **argv)
 	}
 	if (check_sorted(node_a))
 	{
-	//	if (stack_len(node_a) == 2)
-	//		ft_sa(&node_a);
-		ft_rra(&node_a);	
+		if (stack_len(node_a) == 2)
+			ft_sa(&node_a);
+		else if (stack_len(node_a) == 3)
+			sort_three(&node_a);
+		printf("max_node: %d\n", find_node_max(node_a)->value);	
 	}
 	print_stack(node_a);
 	print_stack_rev(node_a);

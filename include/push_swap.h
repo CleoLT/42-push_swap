@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/11 15:23:06 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:16:03 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ void	ft_error(void);
 void	free_stack(t_stack **stack);
 
 t_stack	*find_last_node(t_stack *node);
+t_stack	*find_node_max(t_stack *node);
 
 void	fill_stack(t_stack **node_a, char **argv);
+void	sort_three(t_stack **stack);
 
 void	ft_sa(t_stack **a);
 void	ft_sb(t_stack **b);
