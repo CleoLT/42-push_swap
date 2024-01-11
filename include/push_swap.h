@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/10 18:24:43 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/11 15:23:06 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	ft_sa(t_stack **a);
 void	ft_sb(t_stack **b);
 void	ft_ss(t_stack **a, t_stack **b);
 void	ft_ra(t_stack **a);
+
+void	ft_rra(t_stack **a);
 
 #endif
