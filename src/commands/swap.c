@@ -19,33 +19,11 @@ static void	swap(t_stack **stack)
 		return ;
 	
 	tmp = *stack;
-    printf("\n\ntmp = *stack\n");
-	printf("A: %d        B: %d        C: %d\n", (*stack)->value, (*stack)->next->value, (*stack)->next->next->value);
-    printf("tA: %d       tB: %d      tC: %d\n\n", tmp->value, tmp->next->value, tmp->next->next->value);
-
-
     *stack = (*stack)->next;
-	printf("*stack = (*stack)->next\n");
-    printf("A: %d       B: %d       C: %d\n", (*stack)->value, (*stack)->next->value, (*stack)->next->next->value);
-printf("tA: %d       tB: %d      tC: %d\n\n", tmp->value, tmp->next->value, tmp->next->next->value);
-
-
-    tmp->next = (*stack)->next;
-	printf("tmp->next = (*stack)->next\n");
-   	printf("A: %d       B: %d       C: %d\n", (*stack)->value, (*stack)->next->value, (*stack)->next->next->value);
-printf("tA: %d       tB: %d      tC: %d\n\n", tmp->value, tmp->next->value, tmp->next->next->value);
-
-
-    (*stack)->next = tmp;
-	printf("(*stack)->next = tmp\n");
-	printf("A: %d       B: %d       C: %d\n", (*stack)->value, (*stack)->next->value, (*stack)->next->next->value);
-printf("tA: %d       tB: %d      tC: %d\n\n", tmp->value, tmp->next->value, tmp->next->next->value);
-
-	printf("\n(*stack)->next->next->previous: %d\nnew\n", (*stack)->next->next->previous->value);
-	(*stack)->next->next->previous = (*stack)->next;
-	printf("\n(*stack)->next->next->previous: %d\n", (*stack)->next->next->previous->value);
-
-	(*stack)->next->previous = *stack;
+	tmp->next = (*stack)->next;
+	(*stack)->next = tmp;
+	tmp->next->previous = tmp;
+	tmp->previous = *stack;
 	(*stack)->previous = NULL;
 }
 

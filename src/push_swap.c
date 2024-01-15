@@ -24,29 +24,6 @@ int	stack_len(t_stack *stack)
 	return (count);
 }
 
-void	print_stack(t_stack *node_a)
-{
- 	while(node_a)
-    {
-        printf("%d ", node_a->value);
-        node_a = node_a->next;
-    }
-	printf("\n");
-}
-
-void	print_stack_rev(t_stack *node_a)
-{
-	t_stack *tmp;
-
-	tmp = find_last_node(node_a);
-	while (tmp)
-	{
-		printf("%d ", tmp->value);
-		tmp = tmp->previous;
-	}
-	printf("\n");
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*node_a;
@@ -67,17 +44,11 @@ int	main(int argc, char **argv)
 		if (stack_len(node_a) == 2)
 			ft_sa(&node_a);
 		else if (stack_len(node_a) == 3)
-			sort_three(&node_a);
-		printf("max_node: %d\n", find_node_max(node_a)->value);	
+			sort_three(&node_a);	
 	}
+	printf("main:\n");
 	print_stack(node_a);
 	print_stack_rev(node_a);
-/*   while(node_a)
-    {
-        printf("main: %d\n", node_a->value);
-        node_a = node_a->next;
-    }
-*/
 	free_stack(&node_a);
 	return (0);
 }

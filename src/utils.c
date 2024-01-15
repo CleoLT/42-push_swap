@@ -22,17 +22,20 @@ t_stack *find_last_node(t_stack *node)
 
 t_stack *find_node_max(t_stack *node)
 {
-	t_stack	*tmp;
+	int		max_value;
+	t_stack	*max_node;
 	
 	if (!node)
 		return (NULL);
-	tmp = node;
+	max_value = INT_MIN;
 	while (node)
 	{
-		if (node->value > tmp->value)
-			 tmp->value = node->value;
+		if (node->value > max_value)
+		{
+			max_value = node->value;
+			max_node = node;
+		}
 		node = node->next;
 	}
-	node = tmp;
-	return (node);
+	return (max_node);
 }

@@ -33,6 +33,11 @@ void	free_stack(t_stack **stack);
 t_stack	*find_last_node(t_stack *node);
 t_stack	*find_node_max(t_stack *node);
 
+void	print_stack(t_stack *node_a);
+void	print_stack_rev(t_stack *node_a);
+
+
+
 void	fill_stack(t_stack **node_a, char **argv);
 void	sort_three(t_stack **stack);
 

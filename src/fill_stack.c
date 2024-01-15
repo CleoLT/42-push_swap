@@ -36,7 +36,7 @@ void	fill_stack(t_stack **node_a, char **argv)
 	while(argv[i])
 	{
 		value = atoi(argv[i]);
-		printf("atoi: %d\n", value);
+//		printf("atoi: %d\n", value);
 		append_node(node_a, value);
 		i++;
 	}

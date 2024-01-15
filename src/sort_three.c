@@ -13,6 +13,16 @@
 
 void	sort_three(t_stack **stack)
 {
+	int	max;
 
-		        printf("max_node: %d\n", find_node_max(*stack)->value);
+	max = find_node_max(*stack)->value;
+	if ((*stack)->value == max)
+		ft_ra(stack);
+	else if ((*stack)->next->value == max)
+		ft_rra(stack);
+	if ((*stack)->value > (*stack)->next->value)
+		ft_sa(stack);
+
+	print_stack(*stack);
+	print_stack_rev(*stack);
 }
