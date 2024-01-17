@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:17:57 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/05 16:31:19 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:34:48 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -62,10 +62,10 @@ int	check_sorted(t_stack *stack)
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)
-			return (1);		
+			return (0);		
 		stack = stack->next;
 	}
-	return (0);
+	return (1);
 }
 
 void free_stack(t_stack **stack)
