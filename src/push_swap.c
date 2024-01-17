@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 13:21:27 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/17 15:40:16 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:36:48 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -38,8 +38,8 @@ int	main(int argc, char **argv)
 			sort(&stack_a, &stack_b);	
 	}
 	printf("main:\n");
-	print_stack(stack_a);
-	print_stack_rev(stack_a);
+	print_stack(stack_a, "stack_a main");
+	print_stack_rev(stack_a, "stack_a reverse main");
 	free_stack(&stack_a);
 	return (0);
 }

@@ -1,7 +1,8 @@
 #include "../include/push_swap.h"
 
-void    print_stack(t_stack *node_a)
+void    print_stack(t_stack *node_a, char *str)
 {
+	printf("%s:\n", str);
     while(node_a)
     {
         printf("%d ", node_a->value);
@@ -10,10 +11,11 @@ void    print_stack(t_stack *node_a)
     printf("\n");
 }
 
-void    print_stack_rev(t_stack *node_a)
+void    print_stack_rev(t_stack *node_a, char *str)
 {
     t_stack *tmp;
 
+	printf("%s:\n", str);
     tmp = find_last_node(node_a);
     while (tmp)
     {
@@ -23,4 +25,13 @@ void    print_stack_rev(t_stack *node_a)
     printf("\n");
 }
 
-
+void	print_target(t_stack *stack, char *str)
+{
+	printf("%s:\n", str);
+	while (stack)
+	{
+		printf("%d ", stack->target->value);
+		stack = stack->next;
+	}
+	printf("\n");
+}
