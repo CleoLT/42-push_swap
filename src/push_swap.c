@@ -44,7 +44,9 @@ int	main(int argc, char **argv)
 		if (stack_len(node_a) == 2)
 			ft_sa(&node_a);
 		else if (stack_len(node_a) == 3)
-			sort_three(&node_a);	
+			sort_three(&node_a);
+		else
+			sort(&node_a, &node_b);	
 	}
 	printf("main:\n");
 	print_stack(node_a);
