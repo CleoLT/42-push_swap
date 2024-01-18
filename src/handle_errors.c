@@ -41,7 +41,7 @@ int	error_syntax(char **argv)
 
 int	error_duplicate(t_stack *stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	while (stack)
 	{
@@ -62,16 +62,16 @@ int	check_sorted(t_stack *stack)
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)
-			return (0);		
+			return (0);
 		stack = stack->next;
 	}
 	return (1);
 }
 
-void free_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
-	t_stack *current;
+	t_stack	*current;
 
 	if (!stack)
 		return ;
@@ -81,7 +81,7 @@ void free_stack(t_stack **stack)
 		tmp = current->next;
 		current->value = 0;
 		free(current);
-		current = tmp;	
+		current = tmp;
 	}
 	*stack = NULL;
 }

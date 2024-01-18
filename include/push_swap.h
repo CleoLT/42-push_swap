@@ -20,6 +20,7 @@
 typedef struct s_stack
 {
 	int				value;
+	int				above_median;
 	struct s_stack	*target;
 	struct s_stack	*previous;
 	struct s_stack	*next;
@@ -38,6 +39,7 @@ t_stack	*find_node_max(t_stack *node);
 void	print_stack(t_stack *node_a, char *str);
 void	print_stack_rev(t_stack *node_a, char *str);
 void	print_target(t_stack *stack, char *str);
+void    print_above_median(t_stack *stack, char *str);
 
 
 void	fill_stack(t_stack **node_a, char **argv);

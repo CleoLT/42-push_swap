@@ -35,3 +35,14 @@ void	print_target(t_stack *stack, char *str)
 	}
 	printf("\n");
 }
+
+void	print_above_median(t_stack *stack, char *str)
+{
+	printf("%s:\n", str);
+    while (stack)
+    {
+        printf("%d ", stack->above_median);
+        stack = stack->next;
+    }
+    printf("\n");
+}

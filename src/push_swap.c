@@ -14,7 +14,7 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -35,9 +35,8 @@ int	main(int argc, char **argv)
 		else if (stack_len(stack_a) == 3)
 			sort_three(&stack_a);
 		else
-			sort(&stack_a, &stack_b);	
+			sort(&stack_a, &stack_b);
 	}
-	printf("main:\n");
 	print_stack(stack_a, "stack_a main");
 	print_stack_rev(stack_a, "stack_a reverse main");
 	free_stack(&stack_a);

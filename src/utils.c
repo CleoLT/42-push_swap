@@ -11,20 +11,20 @@
 /* ************************************************************************** */
 #include "../include/push_swap.h"
 
-t_stack *find_last_node(t_stack *node)
+t_stack	*find_last_node(t_stack *node)
 {
-    if (!node)
-        return (NULL);
-    while (node->next)
-        node = node->next;
-    return (node);
+	if (!node)
+		return (NULL);
+	while (node->next)
+		node = node->next;
+	return (node);
 }
 
-t_stack *find_node_max(t_stack *node)
+t_stack	*find_node_max(t_stack *node)
 {
 	int		max_value;
 	t_stack	*max_node;
-	
+
 	if (!node)
 		return (NULL);
 	max_value = INT_MIN;
@@ -40,15 +40,15 @@ t_stack *find_node_max(t_stack *node)
 	return (max_node);
 }
 
-int stack_len(t_stack *stack)
+int	stack_len(t_stack *stack)
 {
-    int count;
+	int	count;
 
-    count = 0;
-    while (stack)
-    {
-        stack = stack->next;
-        count++;
-    }
-    return (count);
+	count = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		count++;
+	}
+	return (count);
 }
