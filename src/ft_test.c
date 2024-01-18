@@ -46,3 +46,26 @@ void	print_above_median(t_stack *stack, char *str)
     }
     printf("\n");
 }
+
+void    print_index(t_stack *stack, char *str)
+{
+	printf("%s:\n", str);
+    while (stack)
+    {
+        printf("%d ", stack->index);
+        stack = stack->next;
+    }
+    printf("\n");
+}
+
+void    print_cost(t_stack *stack, char *str)
+{
+	printf("%s:\n", str);
+    while (stack)
+    {
+        printf("%d ", stack->cost);
+        stack = stack->next;
+    }
+    printf("\n");
+}
+

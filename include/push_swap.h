@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/17 19:35:54 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:40:37 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 typedef struct s_stack
 {
 	int				value;
+	int				index;
 	int				above_median;
+	int				cost;
 	struct s_stack	*target;
 	struct s_stack	*previous;
 	struct s_stack	*next;
@@ -36,15 +38,19 @@ int		stack_len(t_stack *stack);
 t_stack	*find_last_node(t_stack *node);
 t_stack	*find_node_max(t_stack *node);
 
+void	set_index(t_stack *stack);
+
 void	print_stack(t_stack *node_a, char *str);
 void	print_stack_rev(t_stack *node_a, char *str);
 void	print_target(t_stack *stack, char *str);
 void    print_above_median(t_stack *stack, char *str);
-
+void	print_index(t_stack *stack, char *str);
+void	print_cost(t_stack *stack, char *str);
 
 void	fill_stack(t_stack **node_a, char **argv);
 void	sort_three(t_stack **stack);
 void	sort(t_stack **stack_a, t_stack **stack_b);
+void	set_cost(t_stack *stack_a, t_stack *stack_b);
 
 void	ft_sa(t_stack **a);
 void	ft_sb(t_stack **b);

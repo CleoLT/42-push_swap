@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:09:38 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/17 19:46:34 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/18 18:43:31 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -34,26 +34,28 @@ void	smaller_target(t_stack *stack_a, t_stack *stack_b)
 		stack_a = stack_a->next;
 	}
 }
-
-void	above_median(t_stack *stack)
+/*
+void	set_cost(t_stack *stack_a, t_stack *stack_b)
 {
-	int	median;
-	int	i;
+	int	a_len;
+	int	b_len;
 
-	i = 0;
-	median = stack_len(stack) / 2;
-	while (i < median && stack)
+	a_len = stack_len(stack_a);
+	b_len = stacj_len(stack_b);
+	while (stack_a)
 	{
-		stack->above_median = 1;
-		i++;
-		stack = stack->next;
+		if (stack_a->above_median)
+			stack_a->cost = stack_a->index;
+		else 
+			stack_a->cost = a_len - stack_a->index;
+		if (stack_a->index != stack_a->target->index)
+	
+	
 	}
-	while (stack)
-	{
-		stack->above_median = 0;
-		stack = stack->next;
-	}
+
+	
 }
+*/
 
 void	sort(t_stack **stack_a, t_stack **stack_b)
 {
@@ -66,14 +68,18 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 		ft_pb(stack_a, stack_b);
 	while (a_len-- > 3 && !check_sorted(*stack_a))
 	{
-		ft_pb(stack_a, stack_b);
-		above_median(*stack_a);
+		set_index(*stack_a);
+		set_index(*stack_b);
 		smaller_target(*stack_a, *stack_b);
+		set_cost(*stack_a, *stack_b);
 		print_stack(*stack_a, "stack_a sort function");
 		print_stack(*stack_b, "stack_b sort function");
-	//	print_target(*stack_a, "stack_a targets");
+		print_target(*stack_a, "stack_a targets");
 		print_above_median(*stack_a, "stack_a above_median");
+	//	print_index(*stack_a, "stack_a index");
+		print_cost(*stack_a, "sum target cost a");
 		printf("\n\n");
+	ft_pb(stack_a, stack_b);
 	}
 	sort_three(stack_a);
 //	print_stack(*stack_b, "stack_b sort function");
