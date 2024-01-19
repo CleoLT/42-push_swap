@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:09:38 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/19 16:30:47 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/19 19:23:15 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -57,6 +57,26 @@ void	a_to_b(t_stack **a, t_stack **b)
 	ft_pb(a, b);
 }
 
+void    max_on_top(t_stack **stack)
+{
+	t_stack	*node_max;
+
+	node_max = find_node_max(*stack);
+	while (*stack != node_max)
+    {
+        if (node_max->above_median)
+            ft_rb(stack);
+		else
+			ft_rrb(stack);
+    }
+}
+
+void	b_to_a(t_stack **a, t_stack **b)
+{
+	while (*b)
+		ft_pa(b, a);
+}
+
 void	sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	a_len;
@@ -87,4 +107,7 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 //	sort_three(stack_a);
 	print_stack(*stack_b, "stack_b sort function");
 //	print_target(*stack_a, "stack_a targets");
+	max_on_top(stack_b);
+	print_stack(*stack_b, "stack_b sort function");
+	b_to_a(stack_a, stack_b);
 }
