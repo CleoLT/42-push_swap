@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/18 17:40:37 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:07:16 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_stack	*find_last_node(t_stack *node);
 t_stack	*find_node_max(t_stack *node);
 
 void	set_index(t_stack *stack);
+t_stack *get_cheapest(t_stack *node);
+void	cheapest_on_top(t_stack **stack, t_stack *cheapest, char stack_name);
 
 void	print_stack(t_stack *node_a, char *str);
 void	print_stack_rev(t_stack *node_a, char *str);
@@ -56,9 +58,11 @@ void	ft_sa(t_stack **a);
 void	ft_sb(t_stack **b);
 void	ft_ss(t_stack **a, t_stack **b);
 void	ft_ra(t_stack **a);
-
+void	ft_rb(t_stack **b);
+void	ft_rr(t_stack **a, t_stack **b);
 void	ft_rra(t_stack **a);
-
+void	ft_rrb(t_stack **b);
+void	ft_rrr(t_stack **a, t_stack **b);
 void	ft_pb(t_stack **src_a, t_stack **dest_b);
 void	ft_pa(t_stack **src_b, t_stack **dest_a);
 

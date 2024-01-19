@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:09:38 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/18 18:43:31 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:30:47 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -34,28 +34,28 @@ void	smaller_target(t_stack *stack_a, t_stack *stack_b)
 		stack_a = stack_a->next;
 	}
 }
-/*
-void	set_cost(t_stack *stack_a, t_stack *stack_b)
+
+void	a_to_b(t_stack **a, t_stack **b)
 {
-	int	a_len;
-	int	b_len;
+	t_stack *node;
 
-	a_len = stack_len(stack_a);
-	b_len = stacj_len(stack_b);
-	while (stack_a)
+	node = get_cheapest(*a);
+//	printf("cheapest node : %d\n", node->value);
+	if (node->above_median == node->target->above_median)
 	{
-		if (stack_a->above_median)
-			stack_a->cost = stack_a->index;
-		else 
-			stack_a->cost = a_len - stack_a->index;
-		if (stack_a->index != stack_a->target->index)
-	
-	
+		if (node->above_median)
+		{
+			while (*a != node && *b != node->target)
+				ft_rr(a, b);
+		}
+		else if (!node->above_median)
+			while (*a != node && *b != node->target)
+				ft_rrr(a, b);
 	}
-
-	
+	cheapest_on_top(a, node, 'a');
+	cheapest_on_top(b, node->target, 'b');
+	ft_pb(a, b);
 }
-*/
 
 void	sort(t_stack **stack_a, t_stack **stack_b)
 {
@@ -66,22 +66,25 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 	i = 0;
 	while (i++ < 2 && a_len-- > 3 && !check_sorted(*stack_a))
 		ft_pb(stack_a, stack_b);
-	while (a_len-- > 3 && !check_sorted(*stack_a))
+//	while (a_len-- > 3 && !check_sorted(*stack_a))
+	while (*stack_a)
 	{
 		set_index(*stack_a);
 		set_index(*stack_b);
 		smaller_target(*stack_a, *stack_b);
 		set_cost(*stack_a, *stack_b);
+		
 		print_stack(*stack_a, "stack_a sort function");
 		print_stack(*stack_b, "stack_b sort function");
 		print_target(*stack_a, "stack_a targets");
 		print_above_median(*stack_a, "stack_a above_median");
-	//	print_index(*stack_a, "stack_a index");
 		print_cost(*stack_a, "sum target cost a");
+		
+		a_to_b(stack_a, stack_b);
 		printf("\n\n");
-	ft_pb(stack_a, stack_b);
+			
 	}
-	sort_three(stack_a);
-//	print_stack(*stack_b, "stack_b sort function");
+//	sort_three(stack_a);
+	print_stack(*stack_b, "stack_b sort function");
 //	print_target(*stack_a, "stack_a targets");
 }
