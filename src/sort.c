@@ -6,32 +6,47 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:09:38 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/19 19:23:15 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/20 15:13:17 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
 
-void	smaller_target(t_stack *stack_a, t_stack *stack_b)
+void	set_target(t_stack *src, t_stack *target_node, char big_or_small)
 {
-	int		smaller;
-	t_stack	*b_count;
+	int		closest;
+	t_stack	*target_count;
 
-	while (stack_a)
+	while (src)
 	{
-		smaller = INT_MIN;
-		b_count = stack_b;
-		while (b_count)
+		if (big_or_small == 's')
+			closest = INT_MIN;
+		else
+			closest = INT_MAX;
+		target_count = target_node;
+		while (target_count && big_or_small == 's')
 		{
-			if (stack_a->value > b_count->value && b_count->value >= smaller)
+			if (src->value > target_count->value && target_count->value >= closest)
 			{
-				smaller = b_count->value;
-				stack_a->target = b_count;
+				closest = target_count->value;
+				src->target = target_count;
 			}
-			b_count = b_count->next;
+			target_count = target_count->next;
 		}
-		if (!stack_a->target)
-			stack_a->target = find_node_max(stack_b);
-		stack_a = stack_a->next;
+		while (target_count && big_or_small == 'b')
+		{
+			if (src->value < target_count->value && target_count->value <= closest)
+			{
+				closest = target_count->value;
+				src->target = target_count;
+			}
+			target_count = target_count->next;
+		}
+		if (closest == INT_MIN && big_or_small == 's')
+			src->target = find_node_max(target_node);
+		else if (closest == INT_MAX && big_or_small == 'b')
+			src->target = find_node_min(target_node);
+	//	printf("in set_target b %d \n", src->target->value);
+		src = src->next;
 	}
 }
 
@@ -57,24 +72,44 @@ void	a_to_b(t_stack **a, t_stack **b)
 	ft_pb(a, b);
 }
 
-void    max_on_top(t_stack **stack)
+void    min_on_top(t_stack **stack)
 {
-	t_stack	*node_max;
+	t_stack	*node_min;
 
-	node_max = find_node_max(*stack);
-	while (*stack != node_max)
+	node_min = find_node_min(*stack);
+	while (*stack != node_min)
     {
-        if (node_max->above_median)
-            ft_rb(stack);
+        if (node_min->above_median)
+            ft_ra(stack);
 		else
-			ft_rrb(stack);
+			ft_rra(stack);
     }
 }
 
 void	b_to_a(t_stack **a, t_stack **b)
 {
-	while (*b)
-		ft_pa(b, a);
+/*	t_stack *node;
+
+	node = get_cheapest(*b);
+//	printf("cheapest node : %d\n", node->value);
+	if (node->above_median == node->target->above_median)
+	{
+		if (node->above_median)
+		{
+			while (*b != node && *a != node->target)
+				ft_rr(a, b);
+		}
+		else if (!node->above_median)
+			while (*b != node && *a != node->target)
+				ft_rrr(a, b);
+	}
+	cheapest_on_top(b, node, 'b');
+	cheapest_on_top(a, node->target, 'a');
+//	ft_pb(a, b);
+*/
+
+	cheapest_on_top(a, (*b)->target, 'a');
+	ft_pa(b, a);
 }
 
 void	sort(t_stack **stack_a, t_stack **stack_b)
@@ -86,28 +121,41 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 	i = 0;
 	while (i++ < 2 && a_len-- > 3 && !check_sorted(*stack_a))
 		ft_pb(stack_a, stack_b);
-//	while (a_len-- > 3 && !check_sorted(*stack_a))
-	while (*stack_a)
+	while (a_len-- > 3 && !check_sorted(*stack_a))
 	{
 		set_index(*stack_a);
 		set_index(*stack_b);
-		smaller_target(*stack_a, *stack_b);
+		set_target(*stack_a, *stack_b, 's');
 		set_cost(*stack_a, *stack_b);
 		
-		print_stack(*stack_a, "stack_a sort function");
-		print_stack(*stack_b, "stack_b sort function");
-		print_target(*stack_a, "stack_a targets");
-		print_above_median(*stack_a, "stack_a above_median");
-		print_cost(*stack_a, "sum target cost a");
+	//	print_stack(*stack_a, "stack_a sort function");
+	//	print_stack(*stack_b, "stack_b sort function");
+	//	print_target(*stack_a, "stack_a targets");
+	//	print_above_median(*stack_a, "stack_a above_median");
+	//	print_cost(*stack_a, "sum target cost a");
 		
 		a_to_b(stack_a, stack_b);
-		printf("\n\n");
+	//	printf("\n\n");
 			
 	}
-//	sort_three(stack_a);
-	print_stack(*stack_b, "stack_b sort function");
-//	print_target(*stack_a, "stack_a targets");
-	max_on_top(stack_b);
-	print_stack(*stack_b, "stack_b sort function");
-	b_to_a(stack_a, stack_b);
+	sort_three(stack_a);
+	while (*stack_b)
+	{
+//		printf("node min %d \n", find_node_min(*stack_b)->value);
+		set_index(*stack_a);
+		set_index(*stack_b);
+		set_target(*stack_b, *stack_a, 'b');
+		set_cost(*stack_b, *stack_a);
+		
+
+
+//		print_stack(*stack_a, "stack_a sort function");
+//		print_stack(*stack_b, "stack_b sort function");
+//		print_target(*stack_b, "stack_b targets");
+	//	print_cost(*stack_b, "sum target cost b");
+		b_to_a(stack_a, stack_b);
+	}
+//	print_stack(*stack_b, "stack_b sort function");
+//	print_stack(*stack_b, "stack_b sort function");
+	min_on_top(stack_a);
 }

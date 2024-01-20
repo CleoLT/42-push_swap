@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/19 16:07:16 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:47:36 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	free_stack(t_stack **stack);
 int		stack_len(t_stack *stack);
 t_stack	*find_last_node(t_stack *node);
 t_stack	*find_node_max(t_stack *node);
+t_stack	*find_node_min(t_stack *node);
 
 void	set_index(t_stack *stack);
 t_stack *get_cheapest(t_stack *node);

@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:17:42 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/19 14:54:59 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:14:07 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -40,6 +40,25 @@ t_stack	*find_node_max(t_stack *node)
 	return (max_node);
 }
 
+t_stack	*find_node_min(t_stack *node)
+{
+	int		min_value;
+	t_stack	*min_node;
+
+	if (!node)
+		return (NULL);
+	min_value = INT_MAX;
+	while (node)
+	{
+		if (node->value < min_value)
+		{
+			min_value = node->value;
+			min_node = node;
+		}
+		node = node->next;
+	}
+	return (min_node);
+}
 int	stack_len(t_stack *stack)
 {
 	int	count;
