@@ -6,48 +6,57 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:09:38 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/20 15:13:17 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/20 15:48:44 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
 
-void	set_target(t_stack *src, t_stack *target_node, char big_or_small)
+void    smaller_target(t_stack *stack_a, t_stack *stack_b)
 {
-	int		closest;
-	t_stack	*target_count;
+    int     smaller;
+    t_stack *b_count;
 
-	while (src)
-	{
-		if (big_or_small == 's')
-			closest = INT_MIN;
-		else
-			closest = INT_MAX;
-		target_count = target_node;
-		while (target_count && big_or_small == 's')
-		{
-			if (src->value > target_count->value && target_count->value >= closest)
-			{
-				closest = target_count->value;
-				src->target = target_count;
-			}
-			target_count = target_count->next;
-		}
-		while (target_count && big_or_small == 'b')
-		{
-			if (src->value < target_count->value && target_count->value <= closest)
-			{
-				closest = target_count->value;
-				src->target = target_count;
-			}
-			target_count = target_count->next;
-		}
-		if (closest == INT_MIN && big_or_small == 's')
-			src->target = find_node_max(target_node);
-		else if (closest == INT_MAX && big_or_small == 'b')
-			src->target = find_node_min(target_node);
-	//	printf("in set_target b %d \n", src->target->value);
-		src = src->next;
-	}
+    while (stack_a)
+    {
+        smaller = INT_MIN;
+        b_count = stack_b;
+        while (b_count)
+        {
+            if (stack_a->value > b_count->value && b_count->value >= smaller)
+            {
+                smaller = b_count->value;
+                stack_a->target = b_count;
+            }
+            b_count = b_count->next;
+        }
+        if (smaller == INT_MIN)
+            stack_a->target = find_node_max(stack_b);
+        stack_a = stack_a->next;
+    }
+}
+
+void    bigger_target(t_stack *stack_b, t_stack *stack_a)
+{
+    int     bigger;
+    t_stack *a_count;
+
+    while (stack_b)
+    {
+        bigger = INT_MAX;
+        a_count = stack_a;
+        while (a_count)
+        {
+            if (stack_b->value < a_count->value && a_count->value <= bigger)
+            {
+                bigger = a_count->value;
+                stack_b->target = a_count;
+            }
+            a_count = a_count->next;
+        }
+        if (bigger == INT_MAX)
+            stack_b->target = find_node_min(stack_a);
+        stack_b = stack_b->next;
+    }
 }
 
 void	a_to_b(t_stack **a, t_stack **b)
@@ -72,42 +81,8 @@ void	a_to_b(t_stack **a, t_stack **b)
 	ft_pb(a, b);
 }
 
-void    min_on_top(t_stack **stack)
-{
-	t_stack	*node_min;
-
-	node_min = find_node_min(*stack);
-	while (*stack != node_min)
-    {
-        if (node_min->above_median)
-            ft_ra(stack);
-		else
-			ft_rra(stack);
-    }
-}
-
 void	b_to_a(t_stack **a, t_stack **b)
 {
-/*	t_stack *node;
-
-	node = get_cheapest(*b);
-//	printf("cheapest node : %d\n", node->value);
-	if (node->above_median == node->target->above_median)
-	{
-		if (node->above_median)
-		{
-			while (*b != node && *a != node->target)
-				ft_rr(a, b);
-		}
-		else if (!node->above_median)
-			while (*b != node && *a != node->target)
-				ft_rrr(a, b);
-	}
-	cheapest_on_top(b, node, 'b');
-	cheapest_on_top(a, node->target, 'a');
-//	ft_pb(a, b);
-*/
-
 	cheapest_on_top(a, (*b)->target, 'a');
 	ft_pa(b, a);
 }
@@ -125,7 +100,7 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 	{
 		set_index(*stack_a);
 		set_index(*stack_b);
-		set_target(*stack_a, *stack_b, 's');
+		smaller_target(*stack_a, *stack_b);
 		set_cost(*stack_a, *stack_b);
 		
 	//	print_stack(*stack_a, "stack_a sort function");
@@ -144,9 +119,7 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 //		printf("node min %d \n", find_node_min(*stack_b)->value);
 		set_index(*stack_a);
 		set_index(*stack_b);
-		set_target(*stack_b, *stack_a, 'b');
-		set_cost(*stack_b, *stack_a);
-		
+		bigger_target(*stack_b, *stack_a);
 
 
 //		print_stack(*stack_a, "stack_a sort function");

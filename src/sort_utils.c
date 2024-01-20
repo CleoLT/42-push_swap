@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:44:06 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/19 17:34:44 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/20 15:20:17 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */#include "../include/push_swap.h"
 
@@ -76,4 +76,18 @@ void	cheapest_on_top(t_stack **stack, t_stack *cheapest, char stack_name)
 				ft_rrb(stack);
 		}
 	}
+}
+
+void    min_on_top(t_stack **stack)
+{
+    t_stack *node_min;
+
+    node_min = find_node_min(*stack);
+    while (*stack != node_min)
+    {
+        if (node_min->above_median)
+            ft_ra(stack);
+        else
+            ft_rra(stack);
+    }
 }
