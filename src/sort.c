@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:09:38 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/21 14:49:46 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 17:29:25 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -29,7 +29,9 @@ static void	smaller_target(t_stack *stack_a, t_stack *stack_b)
 			}
 			b_count = b_count->next;
 		}
-		if (smaller == INT_MIN)
+		if (!stack_a->target)
+			stack_a->target = find_node_max(stack_b);
+		else if (smaller == INT_MIN && stack_a->target->value != INT_MIN)
 			stack_a->target = find_node_max(stack_b);
 		stack_a = stack_a->next;
 	}
@@ -53,7 +55,9 @@ static void	bigger_target(t_stack *stack_b, t_stack *stack_a)
 			}
 			a_count = a_count->next;
 		}
-		if (bigger == INT_MAX && stack_b->target->value != INT_MAX)
+		if (!stack_b->target)
+			stack_b->target = find_node_min(stack_a);
+		else if (bigger == INT_MAX && stack_b->target->value != INT_MAX)
 			stack_b->target = find_node_min(stack_a);
 		stack_b = stack_b->next;
 	}
