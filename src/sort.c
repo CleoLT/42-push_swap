@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:09:38 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/21 17:29:25 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 19:06:35 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -20,6 +20,7 @@ static void	smaller_target(t_stack *stack_a, t_stack *stack_b)
 	{
 		smaller = INT_MIN;
 		b_count = stack_b;
+		stack_a->target = find_node_max(stack_b);
 		while (b_count)
 		{
 			if (stack_a->value > b_count->value && b_count->value >= smaller)
@@ -29,10 +30,6 @@ static void	smaller_target(t_stack *stack_a, t_stack *stack_b)
 			}
 			b_count = b_count->next;
 		}
-		if (!stack_a->target)
-			stack_a->target = find_node_max(stack_b);
-		else if (smaller == INT_MIN && stack_a->target->value != INT_MIN)
-			stack_a->target = find_node_max(stack_b);
 		stack_a = stack_a->next;
 	}
 }
@@ -46,6 +43,7 @@ static void	bigger_target(t_stack *stack_b, t_stack *stack_a)
 	{
 		bigger = INT_MAX;
 		a_count = stack_a;
+		stack_b->target = find_node_min(stack_a);
 		while (a_count)
 		{
 			if (stack_b->value < a_count->value && a_count->value <= bigger)
@@ -55,10 +53,6 @@ static void	bigger_target(t_stack *stack_b, t_stack *stack_a)
 			}
 			a_count = a_count->next;
 		}
-		if (!stack_b->target)
-			stack_b->target = find_node_min(stack_a);
-		else if (bigger == INT_MAX && stack_b->target->value != INT_MAX)
-			stack_b->target = find_node_min(stack_a);
 		stack_b = stack_b->next;
 	}
 }
