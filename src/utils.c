@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:17:42 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/20 14:14:07 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 14:48:04 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -59,6 +59,7 @@ t_stack	*find_node_min(t_stack *node)
 	}
 	return (min_node);
 }
+
 int	stack_len(t_stack *stack)
 {
 	int	count;

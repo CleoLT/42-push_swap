@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:24:59 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/10 18:24:39 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 15:03:31 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
@@ -17,9 +17,8 @@ static void	swap(t_stack **stack)
 
 	if (!*stack || !((*stack)->next))
 		return ;
-	
 	tmp = *stack;
-    *stack = (*stack)->next;
+	*stack = (*stack)->next;
 	tmp->next = (*stack)->next;
 	(*stack)->next = tmp;
 	tmp->next->previous = tmp;

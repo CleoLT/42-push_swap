@@ -6,55 +6,56 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:44:06 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/20 15:20:17 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 14:47:36 by ale-tron         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */#include "../include/push_swap.h"
+/* ************************************************************************** */
+#include "../include/push_swap.h"
 
-void    set_index(t_stack *stack)
+void	set_index(t_stack *stack)
 {
-    int median;
-    int i;
+	int	median;
+	int	i;
 
-    i = 0;
-    median = stack_len(stack);
+	i = 0;
+	median = stack_len(stack);
 	if (median % 2 == 0)
 		median = median / 2;
 	else
 		median = (median + 1) / 2;
-    while (i < median && stack)
-    {
-        stack->above_median = 1;
-        stack->index = i;
-        i++;
-        stack = stack->next;
-    }
-    while (stack)
-    {
-        stack->index = i;
-        stack->above_median = 0;
-        stack = stack->next;
-        i++;
-    }
+	while (i < median && stack)
+	{
+		stack->above_median = 1;
+		stack->index = i;
+		i++;
+		stack = stack->next;
+	}
+	while (stack)
+	{
+		stack->index = i;
+		stack->above_median = 0;
+		stack = stack->next;
+		i++;
+	}
 }
 
-t_stack *get_cheapest(t_stack *node)
+t_stack	*get_cheapest(t_stack *node)
 {
-    int     min_cost;
-    t_stack *cheapest_node;
-	
+	int		min_cost;
+	t_stack	*cheapest_node;
+
 	if (!node)
 		return (NULL);
-    min_cost = INT_MAX;
-    while (node)
-    {
-        if (node->cost < min_cost)
-        {
-            min_cost = node->cost;
-            cheapest_node = node;
-        }
-        node = node->next;
-    }
-    return (cheapest_node);
+	min_cost = INT_MAX;
+	while (node)
+	{
+		if (node->cost < min_cost)
+		{
+			min_cost = node->cost;
+			cheapest_node = node;
+		}
+		node = node->next;
+	}
+	return (cheapest_node);
 }
 
 void	cheapest_on_top(t_stack **stack, t_stack *cheapest, char stack_name)
@@ -78,16 +79,16 @@ void	cheapest_on_top(t_stack **stack, t_stack *cheapest, char stack_name)
 	}
 }
 
-void    min_on_top(t_stack **stack)
+void	min_on_top(t_stack **stack)
 {
-    t_stack *node_min;
+	t_stack	*node_min;
 
-    node_min = find_node_min(*stack);
-    while (*stack != node_min)
-    {
-        if (node_min->above_median)
-            ft_ra(stack);
-        else
-            ft_rra(stack);
-    }
+	node_min = find_node_min(*stack);
+	while (*stack != node_min)
+	{
+		if (node_min->above_median)
+			ft_ra(stack);
+		else
+			ft_rra(stack);
+	}
 }

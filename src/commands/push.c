@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:06:19 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/17 16:30:01 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 14:58:21 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
@@ -30,7 +30,6 @@ static void	push(t_stack **src, t_stack **dest)
 		first_node->next = *dest;
 		*dest = first_node;
 	}
-
 }
 
 void	ft_pb(t_stack **src_a, t_stack **dest_b)

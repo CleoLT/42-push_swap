@@ -6,10 +6,19 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 13:21:27 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/20 15:04:04 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 14:42:19 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
+
+static void	ft_duplicate(t_stack *stack_a)
+{
+	if (error_duplicate(stack_a))
+	{
+		free_stack(&stack_a);
+		ft_error();
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -23,11 +32,7 @@ int	main(int argc, char **argv)
 	if (error_syntax(argv))
 		ft_error();
 	fill_stack(&stack_a, argv);
-	if (error_duplicate(stack_a))
-	{
-		free_stack(&stack_a);
-		ft_error();
-	}
+	ft_duplicate(stack_a);
 	if (!check_sorted(stack_a))
 	{
 		if (stack_len(stack_a) == 2)
@@ -37,8 +42,6 @@ int	main(int argc, char **argv)
 		else
 			sort(&stack_a, &stack_b);
 	}
-//	print_stack(stack_a, "stack_a main");
-//	print_stack_rev(stack_a, "stack_a reverse main");
 	free_stack(&stack_a);
 	return (0);
 }

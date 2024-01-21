@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/20 15:20:07 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 14:53:52 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,11 @@ t_stack	*find_node_max(t_stack *node);
 t_stack	*find_node_min(t_stack *node);
 
 void	set_index(t_stack *stack);
-t_stack *get_cheapest(t_stack *node);
+t_stack	*get_cheapest(t_stack *node);
 void	cheapest_on_top(t_stack **stack, t_stack *cheapest, char stack_name);
-void    min_on_top(t_stack **stack);
-
-void	print_stack(t_stack *node_a, char *str);
-void	print_stack_rev(t_stack *node_a, char *str);
-void	print_target(t_stack *stack, char *str);
-void    print_above_median(t_stack *stack, char *str);
-void	print_index(t_stack *stack, char *str);
-void	print_cost(t_stack *stack, char *str);
+void	min_on_top(t_stack **stack);
 
 void	fill_stack(t_stack **node_a, char **argv);
-void	sort_three(t_stack **stack);
 void	sort(t_stack **stack_a, t_stack **stack_b);
 void	set_cost(t_stack *stack_a, t_stack *stack_b);
 
@@ -67,5 +59,13 @@ void	ft_rrb(t_stack **b);
 void	ft_rrr(t_stack **a, t_stack **b);
 void	ft_pb(t_stack **src_a, t_stack **dest_b);
 void	ft_pa(t_stack **src_b, t_stack **dest_a);
+void	sort_three(t_stack **stack);
+
+void	print_stack(t_stack *node_a, char *str);
+void	print_stack_rev(t_stack *node_a, char *str);
+void	print_target(t_stack *stack, char *str);
+void	print_above_median(t_stack *stack, char *str);
+void	print_index(t_stack *stack, char *str);
+void	print_cost(t_stack *stack, char *str);
 
 #endif

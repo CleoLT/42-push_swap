@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:01:36 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/17 19:39:08 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 15:01:05 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
@@ -22,7 +22,4 @@ void	sort_three(t_stack **stack)
 		ft_rra(stack);
 	if ((*stack)->value > (*stack)->next->value)
 		ft_sa(stack);
-
-//	print_stack(*stack);
-//	print_stack_rev(*stack);
 }
