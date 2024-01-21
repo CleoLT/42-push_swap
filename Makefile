@@ -6,14 +6,14 @@
 #    By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 16:48:17 by ale-tron          #+#    #+#              #
-#    Updated: 2024/01/21 18:43:07 by ale-tron         ###   ########.fr        #
+#    Updated: 2024/01/21 19:11:36 by ale-tron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wextra -Werror -Wall -fsanitize=address
+CFLAGS = -Wextra -Werror -Wall
 
 RM = rm -f
 
