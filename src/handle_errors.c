@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:17:57 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/19 18:28:02 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 18:32:58 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -20,6 +20,8 @@ int	error_syntax(char **argv)
 	while (argv[i])
 	{
 		j = 0;
+		if (argv[i][j] == '\0')
+			return (-1);
 		if (argv[i][j] && (argv[i][j] == '-' || argv[i][j] == '+'))
 		{
 			if (!ft_isdigit(argv[i][j + 1]))

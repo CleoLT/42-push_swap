@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:32:44 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/21 14:32:52 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/21 18:32:23 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -44,7 +44,7 @@ void	fill_stack(t_stack **node_a, char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		value = atoi(argv[i]);
+		value = ft_atoi(argv[i]);
 		append_node(node_a, value);
 		i++;
 	}
