@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:17:42 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/21 14:48:04 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:18:53 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -71,4 +71,15 @@ int	stack_len(t_stack *stack)
 		count++;
 	}
 	return (count);
+}
+
+int	check_sorted(t_stack *stack)
+{
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }

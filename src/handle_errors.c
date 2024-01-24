@@ -6,10 +6,24 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:17:57 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/21 19:15:59 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:18:12 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
+
+int	error_int(char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
 
 int	error_syntax(char **argv)
 {
@@ -34,8 +48,6 @@ int	error_syntax(char **argv)
 				return (-1);
 			j++;
 		}
-		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
-			return (-1);
 		i++;
 	}
 	return (0);
@@ -57,17 +69,6 @@ int	error_duplicate(t_stack *stack)
 		stack = stack->next;
 	}
 	return (0);
-}
-
-int	check_sorted(t_stack *stack)
-{
-	while (stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
 }
 
 void	free_stack(t_stack **stack)

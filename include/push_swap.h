@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:31:35 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/21 14:53:52 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:14:47 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+int		error_int(char **argv);
 int		error_duplicate(t_stack *stack);
 int		error_syntax(char **argv);
-int		check_sorted(t_stack *stack);
 void	ft_error(void);
 void	free_stack(t_stack **stack);
 
+int		check_sorted(t_stack *stack);
 int		stack_len(t_stack *stack);
 t_stack	*find_last_node(t_stack *node);
 t_stack	*find_node_max(t_stack *node);

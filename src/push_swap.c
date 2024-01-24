@@ -6,7 +6,7 @@
 /*   By: ale-tron <ale-tron@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 13:21:27 by ale-tron          #+#    #+#             */
-/*   Updated: 2024/01/21 19:15:53 by ale-tron         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:13:12 by ale-tron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc == 1)
 		return (0);
-	if (error_syntax(argv))
+	if (error_syntax(argv) || error_int(argv))
 		ft_error();
 	fill_stack(&stack_a, argv);
 	ft_duplicate(stack_a);
